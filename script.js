@@ -3,6 +3,13 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
+    const textarea = document.getElementById('formMessage');
+    const counter = document.getElementById('charCounter');
+
+    textarea.addEventListener('input', () => {
+        const currentLength = textarea.value.length;
+        counter.textContent = `${currentLength} / 500 caracteres`;
+    });
 
     // ==========================================
     // 1. CONTADOR DE VISITAS CON LOCALSTORAGE
@@ -147,11 +154,3 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactForm) {
         contact
     }
-
-    const textarea = document.getElementById('formMessage');
-    const counter = document.getElementById('charCounter');
-
-    textarea.addEventListener('input', () => {
-        const currentLength = textarea.value.length;
-        counter.textContent = `${currentLength} / 500 caracteres`;
-    });
