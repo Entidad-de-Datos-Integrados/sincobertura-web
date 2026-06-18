@@ -1,0 +1,470 @@
+/* ===== RESET Y BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc;
+    color: #0f172a;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===== TOP BANNER ===== */
+.top-banner {
+    background: #0f172a;
+    color: white;
+    text-align: center;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.top-banner i {
+    color: #facc15;
+    margin-right: 8px;
+}
+
+.top-banner a {
+    color: #facc15;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+/* ===== HERO ===== */
+.hero {
+    padding: 60px 0 40px;
+    background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #0f172a;
+    margin-bottom: 10px;
+}
+
+.hero h1 span {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.tagline {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 20px;
+    background: #e2e8f0;
+    padding: 8px 24px;
+    border-radius: 50px;
+    display: inline-block;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #475569;
+    max-width: 700px;
+    margin-bottom: 30px;
+}
+
+.badge-price {
+    background: #dc2626;
+    color: white;
+    padding: 12px 40px;
+    border-radius: 60px;
+    font-weight: 800;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.3);
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.badge-price small {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.cta-button {
+    display: inline-block;
+    background: #0f172a;
+    color: white;
+    padding: 16px 48px;
+    border-radius: 60px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid #0f172a;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.cta-button i {
+    margin-right: 10px;
+}
+
+.cta-button:hover {
+    background: transparent;
+    color: #0f172a;
+}
+
+/* ===== CONTADOR DE VISITAS ===== */
+.visitor-counter {
+    margin-top: 25px;
+    padding: 10px 25px;
+    background: rgba(37, 99, 235, 0.08);
+    border-radius: 50px;
+    font-size: 0.95rem;
+    color: #2563eb;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(37, 99, 235, 0.15);
+}
+
+.visitor-counter i {
+    font-size: 1.1rem;
+}
+
+#visitCounter {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #0f172a;
+    min-width: 30px;
+}
+
+/* ===== FEATURES (CARDS) ===== */
+.features {
+    padding: 60px 0;
+    background: white;
+}
+
+.features h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #64748b;
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: #f8fafc;
+    padding: 30px 20px;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 30px -10px rgba(0,0,0,0.08);
+    border-color: #94a3b8;
+}
+
+.card i {
+    font-size: 2.8rem;
+    color: #2563eb;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+}
+
+.card p {
+    color: #475569;
+    font-size: 0.95rem;
+}
+
+/* ===== CALCULADORA DE SUBREDES ===== */
+.calculator-section {
+    padding: 60px 0;
+    background: #f8fafc;
+}
+
+.calculator-container {
+    background: white;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.calc-inputs {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    margin-bottom: 30px;
+}
+
+.calc-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.calc-group label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #334155;
+    margin-bottom: 6px;
+}
+
+.calc-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s;
+    background: #fafbfc;
+}
+
+.calc-group input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.calc-inputs .cta-button {
+    margin-top: 0;
+    padding: 12px 30px;
+    font-size: 1rem;
+}
+
+.calc-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #f1f5f9;
+}
+
+.result-item {
+    background: #f8fafc;
+    padding: 14px 18px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.result-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.result-value {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 4px;
+    font-family: 'Inter', monospace;
+}
+
+/* ===== MOCKUP ===== */
+.mockup-section {
+    background: #f1f5f9;
+    padding: 60px 0;
+}
+
+.mockup-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.mockup-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.mockup-item {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    border-left: 6px solid #2563eb;
+}
+
+.title-mock {
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.title-mock i {
+    color: #2563eb;
+    width: 24px;
+}
+
+.mockup-item p {
+    color: #334155;
+    font-size: 0.95rem;
+}
+
+.tag {
+    display: inline-block;
+    background: #dbeafe;
+    color: #1e40af;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 50px;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+.price-tag {
+    display: inline-block;
+    background: #dc2626;
+    color: white;
+    font-weight: 700;
+    padding: 2px 16px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    margin-top: 8px;
+}
+
+/* ===== TESTIMONIO ===== */
+.testimonial {
+    padding: 40px 0;
+    background: white;
+    text-align: center;
+}
+
+.testimonial p {
+    font-size: 1.1rem;
+    color: #334155;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.testimonial-author {
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: #0f172a;
+    color: #cbd5e1;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer-brand {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: white;
+}
+
+.footer a {
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.social-icons {
+    margin-top: 15px;
+    font-size: 1.5rem;
+    letter-spacing: 15px;
+}
+
+.social-icons i {
+    cursor: default;
+    color: #94a3b8;
+}
+
+.footer-copy {
+    margin-top: 25px;
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.footer-copy a {
+    color: #94a3b8;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.4rem;
+    }
+    .badge-price {
+        font-size: 1.4rem;
+        padding: 10px 25px;
+    }
+    .tagline {
+        font-size: 1rem;
+    }
+    .calculator-container {
+        padding: 20px;
+    }
+    .calc-inputs {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .calc-group {
+        min-width: 100%;
+    }
+    .calc-inputs .cta-button {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+    .calc-results {
+        grid-template-columns: 1fr 1fr;
+    }
+}
