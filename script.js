@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const textarea = document.getElementById('formMessage');
     const counter = document.getElementById('charCounter');
 
-    textarea.addEventListener('input', () => {
+    textarea.addEventListener('change', () => {
         const currentLength = textarea.value.length;
         counter.textContent = `${currentLength} / 500 caracteres`;
     });
