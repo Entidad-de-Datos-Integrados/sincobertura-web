@@ -187,10 +187,10 @@
             
             <div class="contact-container">
                 <!-- IMPORTANTE: Cambia 'TU_NUEVO_HASH' por el hash que obtengas de Formspree -->
-                <form id="contactForm" action="https://formspree.io/f/TU_NUEVO_HASH" method="POST">
+                <form id="contactForm" action="https://formspree.io/f/xrevwlww" method="POST">
                     <div class="form-group">
                         <label for="formName">
-                            <i class="fas fa-user"></i> Nombre completo *
+                            <i class="fas fa-user"></i> Interesado/Empresa*
                         </label>
                         <input type="text" id="formName" name="name" placeholder="Tu nombre completo" required />
                     </div>
@@ -199,21 +199,21 @@
                         <label for="formEmail">
                             <i class="fas fa-envelope"></i> Correo electrónico *
                         </label>
-                        <input type="email" id="formEmail" name="email" placeholder="tucorreo@ejemplo.com" required />
+                        <input type="email" id="formEmail" name="email" placeholder="..." required />
                     </div>
                     
                     <div class="form-group">
                         <label for="formOffer">
                             <i class="fas fa-dollar-sign"></i> Tu oferta (USD) *
                         </label>
-                        <input type="number" id="formOffer" name="offer" placeholder="Ej: 3500" min="1" step="any" required />
+                        <input type="number" id="formOffer" name="offer" placeholder="..." min="1" step="any" required />
                     </div>
                     
                     <div class="form-group">
                         <label for="formMessage">
                             <i class="fas fa-comment"></i> Mensaje adicional
                         </label>
-                        <textarea id="formMessage" name="message" rows="4" placeholder="Cuéntanos por qué te interesa este dominio..."></textarea>
+                        <textarea maxlength="500" id="formMessage" name="message" rows="4" placeholder="..." style="resize:none"></textarea>
                     </div>
                     
                     <!-- Campos ocultos -->
