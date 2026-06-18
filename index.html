@@ -166,33 +166,82 @@
             <p class="testimonial-author">— Análisis de mercado, 2026</p>
         </div>
     </section>
-<section id="contact" style="padding: 60px 0; background-color: #ffffff; border-top: 2px solid #e2e8f0;">
-  <div class="container" style="max-width: 600px; text-align: center;">
-    <h2>Hacer una Oferta por el Dominio</h2>
-    <p class="subtitle" style="margin-bottom: 30px;">Envía tu propuesta formal. Todas las ofertas serias serán evaluadas. La transferencia se realizará mediante plataformas seguras (Escrow Porkbun).</p>
-    
-    <form action="https://formspree.io/f/TU_ID_DE_FORMSPREE" method="POST" style="display: flex; flex-direction: column; gap: 15px; text-align: left;">
-      <div>
-        <label style="font-weight: 600; font-size: 0.9rem; color: #334155;">Nombre completo</label>
-        <input type="text" name="name" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #cbd5e1; font-family: inherit;" placeholder="">
-      </div>
-      <div>
-        <label style="font-weight: 600; font-size: 0.9rem; color: #334155;">Correo electrónico</label>
-        <input type="email" name="email" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #cbd5e1; font-family: inherit;" placeholder="">
-      </div>
-      <div>
-        <label style="font-weight: 600; font-size: 0.9rem; color: #334155;">Tu Oferta (USD)</label>
-        <input type="number" name="offer" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #cbd5e1; font-family: inherit;" placeholder="">
-      </div>
-      <div>
-        <label style="font-weight: 600; font-size: 0.9rem; color: #334155;">Mensaje / Comentarios adicionales</label>
-        <textarea name="message" rows="4" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #cbd5e1; font-family: inherit;" placeholder="Detalles de la propuesta..."></textarea>
-      </div>
-      <button type="submit" class="cta-button" style="width: 100%; margin-top: 10px; background: #2563eb; border-color: #2563eb;">
-        <i class="fas fa-paper-plane"></i> Enviar propuesta formal
-      </button>
-    </form>
-  </div>
+<!-- ===== SECCIÓN DE CONTACTO / OFERTAS ===== -->
+<section class="contact-section" id="contact">
+    <div class="container">
+        <h2><i class="fas fa-handshake" style="color: #2563eb;"></i> Haz tu oferta</h2>
+        <p class="subtitle">Completa el formulario y te responderemos en menos de 24 horas.</p>
+        
+        <div class="contact-container">
+            <form id="contactForm" action="https://formspree.io/f/xrevwlw" method="POST">
+                <div class="form-group">
+                    <label for="formName">
+                        <i class="fas fa-user"></i> Nombre completo *
+                    </label>
+                    <input type="text" id="formName" name="name" placeholder="Tu nombre completo" required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="formEmail">
+                        <i class="fas fa-envelope"></i> Correo electrónico *
+                    </label>
+                    <input type="email" id="formEmail" name="email" placeholder="tucorreo@ejemplo.com" required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="formPhone">
+                        <i class="fas fa-phone"></i> Teléfono (opcional)
+                    </label>
+                    <input type="tel" id="formPhone" name="phone" placeholder="+34 600 000 000" />
+                </div>
+                
+                <div class="form-group">
+                    <label for="formOffer">
+                        <i class="fas fa-dollar-sign"></i> Tu oferta (USD) *
+                    </label>
+                    <input type="number" id="formOffer" name="offer" placeholder="Ej: 3500" min="1" step="100" required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="formMessage">
+                        <i class="fas fa-comment"></i> Mensaje adicional
+                    </label>
+                    <textarea id="formMessage" name="message" rows="4" placeholder="Cuéntanos por qué te interesa este dominio..."></textarea>
+                </div>
+                
+                <!-- Campos ocultos para identificar la oferta -->
+                <input type="hidden" name="dominio" value="SinCobertura.com" />
+                <input type="hidden" name="_subject" value="Nueva oferta por SinCobertura.com" />
+                <input type="hidden" name="_captcha" value="false" />
+                
+                <button type="submit" id="submitBtn" class="cta-button" style="width: 100%; text-align: center; justify-content: center;">
+                    <i class="fas fa-paper-plane"></i> Enviar oferta
+                </button>
+                
+                <!-- Mensaje de estado -->
+                <div id="formStatus" style="margin-top: 15px; display: none;"></div>
+            </form>
+            
+            <!-- Información adicional -->
+            <div class="contact-info">
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h4>Respuesta rápida</h4>
+                    <p>Respondemos todas las ofertas en menos de 24 horas.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-lock"></i>
+                    <h4>100% confidencial</h4>
+                    <p>Tus datos están seguros y no serán compartidos.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-file-signature"></i>
+                    <h4>Oferta vinculante</h4>
+                    <p>Tu oferta es seria y será considerada prioritariamente.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
