@@ -1,4 +1,4 @@
-* ===== RESET Y BASE ===== */
+/* ===== RESET Y BASE ===== */
 * {
     margin: 0;
     padding: 0;
@@ -16,15 +16,6 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-}
-
-/* ===== COMPONENTES REUTILIZABLES ===== */
-.section-padding {
-    padding: 60px 0;
-}
-
-.text-center {
-    text-align: center;
 }
 
 /* ===== TOP BANNER ===== */
@@ -89,6 +80,13 @@ body {
     display: inline-block;
 }
 
+.hero p {
+    font-size: 1.2rem;
+    color: #475569;
+    max-width: 700px;
+    margin-bottom: 30px;
+}
+
 .badge-price {
     background: #dc2626;
     color: white;
@@ -102,34 +100,97 @@ body {
     margin-bottom: 15px;
 }
 
-/* Estilo para el botón de Porkbun (antes inline) */
-.btn-porkbun {
+.badge-price small {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+/* ===== BOTONES DEL HERO ===== */
+.hero-buttons {
     display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.cta-button {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    width: 100%;
-    max-width: 400px;
-    padding: 18px;
-    background-color: #2563eb;
-    color: #ffffff;
-    border-radius: 10px;
-    font-size: 1.2rem;
+    gap: 10px;
+    padding: 16px 48px;
+    border-radius: 60px;
     font-weight: 700;
+    font-size: 1.1rem;
     text-decoration: none;
-    transition: background-color 0.2s;
-    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
-    margin: 20px auto;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
 }
 
-.btn-porkbun:hover {
-    background-color: #1d4ed8;
+.cta-button.primary {
+    background: #0f172a;
+    color: white;
+    border-color: #0f172a;
 }
 
-/* ===== FEATURES (CARDS) ===== */
+.cta-button.primary:hover {
+    background: transparent;
+    color: #0f172a;
+}
+
+.cta-button.secondary {
+    background: transparent;
+    color: #0f172a;
+    border-color: #0f172a;
+}
+
+.cta-button.secondary:hover {
+    background: #0f172a;
+    color: white;
+}
+
+/* ===== CONTADOR DE VISITAS ===== */
+.visitor-counter {
+    margin-top: 25px;
+    padding: 10px 25px;
+    background: rgba(37, 99, 235, 0.08);
+    border-radius: 50px;
+    font-size: 0.95rem;
+    color: #2563eb;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(37, 99, 235, 0.15);
+}
+
+#visitCounter {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #0f172a;
+    min-width: 30px;
+}
+
+/* ===== FEATURES ===== */
 .features {
     padding: 60px 0;
     background: white;
+}
+
+.features h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #64748b;
+    font-size: 1.1rem;
+    margin-bottom: 50px;
 }
 
 .grid {
@@ -147,48 +208,314 @@ body {
     text-align: center;
 }
 
-/* ===== FORMULARIO DE CONTACTO (Estilos Migrados) ===== */
-.contact-wrapper {
-    max-width: 550px;
-    margin: 0 auto;
-    background: #ffffff;
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 30px -10px rgba(0,0,0,0.08);
+    border-color: #94a3b8;
+}
+
+.card i {
+    font-size: 2.8rem;
+    color: #2563eb;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+}
+
+.card p {
+    color: #475569;
+    font-size: 0.95rem;
+}
+
+/* ===== CALCULADORA ===== */
+.calculator-section {
+    padding: 60px 0;
+    background: #f8fafc;
+}
+
+.calculator-container {
+    background: white;
+    border-radius: 24px;
     padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
     border: 1px solid #e2e8f0;
-    text-align: left;
+}
+
+.calc-inputs {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    margin-bottom: 30px;
+}
+
+.calc-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.calc-group label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #334155;
+    margin-bottom: 6px;
+}
+
+.calc-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s;
+    background: #fafbfc;
+}
+
+.calc-group input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.calc-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #f1f5f9;
+}
+
+.result-item {
+    background: #f8fafc;
+    padding: 14px 18px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.result-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.result-value {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 4px;
+    font-family: 'Inter', monospace;
+}
+
+/* ===== MOCKUP ===== */
+.mockup-section {
+    background: #f1f5f9;
+    padding: 60px 0;
+}
+
+.mockup-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.mockup-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.mockup-item {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    border-left: 6px solid #2563eb;
+}
+
+.title-mock {
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.title-mock i {
+    color: #2563eb;
+    width: 24px;
+}
+
+.mockup-item p {
+    color: #334155;
+    font-size: 0.95rem;
+}
+
+.tag {
+    display: inline-block;
+    background: #dbeafe;
+    color: #1e40af;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 50px;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+.price-tag {
+    display: inline-block;
+    background: #dc2626;
+    color: white;
+    font-weight: 700;
+    padding: 2px 16px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    margin-top: 8px;
+}
+
+/* ===== TESTIMONIO ===== */
+.testimonial {
+    padding: 40px 0;
+    background: white;
+    text-align: center;
+}
+
+.testimonial p {
+    font-size: 1.1rem;
+    color: #334155;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.testimonial-author {
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+/* ===== CONTACTO ===== */
+.contact-section {
+    padding: 60px 0;
+    background: white;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.contact-container form {
+    background: #f8fafc;
+    padding: 35px;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
     margin-bottom: 20px;
 }
 
 .form-group label {
+    display: block;
     font-weight: 600;
     font-size: 0.9rem;
     color: #334155;
+    margin-bottom: 6px;
 }
 
-.form-group input, .form-group textarea {
+.form-group label i {
+    color: #2563eb;
+    width: 20px;
+}
+
+.form-group input,
+.form-group textarea {
     width: 100%;
     padding: 12px 16px;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    font-family: inherit;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s;
+    background: white;
 }
 
-.btn-submit {
-    width: 100%;
-    padding: 14px;
-    background-color: #0f172a;
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-card {
+    background: #f8fafc;
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    text-align: center;
+}
+
+.info-card i {
+    font-size: 2rem;
+    color: #2563eb;
+    margin-bottom: 10px;
+}
+
+.info-card h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 5px;
+}
+
+.info-card p {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+#formStatus {
+    padding: 12px 16px;
+    border-radius: 12px;
     font-weight: 600;
-    cursor: pointer;
+}
+
+#formStatus.success {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #86efac;
+    display: block !important;
+}
+
+#formStatus.error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+    display: block !important;
 }
 
 /* ===== FOOTER ===== */
@@ -199,8 +526,88 @@ body {
     text-align: center;
 }
 
+.footer-brand {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: white;
+}
+
+.footer a {
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.social-icons {
+    margin-top: 15px;
+    font-size: 1.5rem;
+    letter-spacing: 15px;
+}
+
+.social-icons i {
+    cursor: default;
+    color: #94a3b8;
+}
+
+.footer-copy {
+    margin-top: 25px;
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.footer-copy a {
+    color: #94a3b8;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-    .hero h1 { font-size: 2.4rem; }
-    .badge-price { font-size: 1.4rem; }
+    .hero h1 {
+        font-size: 2.4rem;
+    }
+    .badge-price {
+        font-size: 1.4rem;
+        padding: 10px 25px;
+    }
+    .tagline {
+        font-size: 1rem;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .hero-buttons .cta-button {
+        width: 100%;
+        max-width: 320px;
+        justify-content: center;
+        padding: 14px 24px;
+        font-size: 1rem;
+    }
+    .calculator-container {
+        padding: 20px;
+    }
+    .calc-inputs {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .calc-group {
+        min-width: 100%;
+    }
+    .calc-results {
+        grid-template-columns: 1fr 1fr;
+    }
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .contact-container form {
+        padding: 25px;
+    }
+    .mockup-grid {
+        grid-template-columns: 1fr;
+    }
 }
