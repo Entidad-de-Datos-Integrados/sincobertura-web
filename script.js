@@ -3,6 +3,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Contador de caracteres en el texarea
     const textarea = document.getElementById('formMessage');
     const counter = document.getElementById('charCounter');
 
@@ -147,11 +148,79 @@ document.addEventListener('DOMContentLoaded', function() {
     // ==========================================
     // 4. FORMULARIO DE CONTACTO
     // ==========================================
+    
     const contactForm = document.getElementById('contactForm');
     const formStatus = document.getElementById('formStatus');
     const submitBtn = document.getElementById('submitBtn');
 
     if (contactForm) {
-        contact
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('formName').value.trim();
+            const email = document.getElementById('formEmail').value.trim();
+            const offer = document.getElementById('formOffer').value.trim();
+            
+            if (!name || !email || !offer) {
+                formStatus.className = 'error';
+                formStatus.textContent = '❌ Por favor, completa todos los campos obligatorios (*).';
+                formStatus.style.display = 'block';
+                return;
+            }
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                formStatus.className = 'error';
+                formStatus.textContent = '❌ Por favor, introduce un correo electrónico válido.';
+                formStatus.style.display = 'block';
+                return;
+            }
+            
+            if (isNaN(offer) || parseInt(offer) < 1) {
+                formStatus.className = 'error';
+                formStatus.textContent = '❌ Por favor, introduce una oferta válida (mínimo $1 USD).';
+                formStatus.style.display = 'block';
+                return;
+            }
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            formStatus.style.display = 'none';
+            
+            const formData = new FormData(contactForm);
+            
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    formStatus.className = 'success';
+                    formStatus.textContent = '✅ ¡Oferta enviada con éxito! Te responderemos en menos de 24 horas.';
+                    formStatus.style.display = 'block';
+                    contactForm.reset();
+                } else {
+                    return response.json().then(data => {
+                        throw new Error(data.error || 'Error al enviar el formulario');
+                    });
+                }
+            })
+            .catch(error => {
+                formStatus.className = 'error';
+                formStatus.textContent = '❌ Hubo un error al enviar tu oferta. Por favor, intenta de nuevo.';
+                formStatus.style.display = 'block';
+                console.error('Error:', error);
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar oferta';
+            });
+        });
     }
+
+    console.log('🚀 SinCobertura.com - Dominio listo para tu próximo proyecto.');
+    console.log('📊 Versión con HTML, CSS y JS separados (buenas prácticas)');
 });
