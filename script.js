@@ -154,3 +154,4 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactForm) {
         contact
     }
+});
