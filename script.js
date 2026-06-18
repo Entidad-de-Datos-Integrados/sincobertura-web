@@ -224,3 +224,311 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 SinCobertura.com - Dominio listo para tu próximo proyecto.');
     console.log('📊 Versión con HTML, CSS y JS separados (buenas prácticas)');
 });
+
+// ==========================================
+// 6. PRUEBA DE ESTABILIDAD DE INTERNET
+// ==========================================
+let stabilityTestRunning = false;
+let stabilityInterval = null;
+let packetHistory = [];
+let stats = {
+    sent: 0,
+    received: 0,
+    lost: 0,
+    latencies: [],
+    startTime: null
+};
+
+const startBtn = document.getElementById('startStabilityTest');
+const testStatus = document.getElementById('testStatus');
+const chartContainer = document.getElementById('chartContainer');
+
+// Elementos de métricas
+const packetLossEl = document.getElementById('packetLoss');
+const avgLatencyEl = document.getElementById('avgLatency');
+const jitterEl = document.getElementById('jitterValue');
+const sentPacketsEl = document.getElementById('sentPackets');
+const receivedPacketsEl = document.getElementById('receivedPackets');
+const lostPacketsEl = document.getElementById('lostPackets');
+const minLatencyEl = document.getElementById('minLatency');
+const maxLatencyEl = document.getElementById('maxLatency');
+const testDurationEl = document.getElementById('testDuration');
+
+function generateLatency() {
+    // Simula latencia con variación realista
+    const baseLatency = 20 + Math.random() * 80;
+    // Algunos paquetes tienen latencia alta (simulando congestión)
+    if (Math.random() < 0.05) {
+        return 150 + Math.random() * 200;
+    }
+    return baseLatency;
+}
+
+function addPacketToChart(latency) {
+    // Determinar estado
+    let status = 'good';
+    if (latency === null) {
+        status = 'lost';
+    } else if (latency > 150) {
+        status = 'bad';
+    } else if (latency > 80) {
+        status = 'regular';
+    }
+    
+    packetHistory.push({ latency, status });
+    if (packetHistory.length > 50) {
+        packetHistory.shift();
+    }
+    
+    renderChart();
+}
+
+function renderChart() {
+    const maxLatency = 200;
+    chartContainer.innerHTML = '';
+    
+    packetHistory.forEach(packet => {
+        const bar = document.createElement('div');
+        bar.className = `chart-bar ${packet.status}`;
+        const height = packet.latency !== null 
+            ? Math.min((packet.latency / maxLatency) * 100, 100)
+            : 4;
+        bar.style.height = `${Math.max(height, 4)}%`;
+        chartContainer.appendChild(bar);
+    });
+}
+
+function updateMetrics() {
+    const total = stats.sent;
+    const received = stats.received;
+    const lost = stats.lost;
+    const latencies = stats.latencies;
+    
+    // Pérdida de paquetes
+    const lossPercent = total > 0 ? (lost / total) * 100 : 0;
+    packetLossEl.textContent = `${lossPercent.toFixed(1)}%`;
+    packetLossEl.className = 'metric-value';
+    if (lossPercent > 10) {
+        packetLossEl.classList.add('danger');
+    } else if (lossPercent > 3) {
+        packetLossEl.classList.add('warning');
+    } else {
+        packetLossEl.classList.add('success');
+    }
+    
+    // Latencia promedio
+    const avg = latencies.length > 0 
+        ? latencies.reduce((a, b) => a + b, 0) / latencies.length 
+        : 0;
+    avgLatencyEl.textContent = `${avg.toFixed(0)} ms`;
+    avgLatencyEl.className = 'metric-value';
+    if (avg > 150) {
+        avgLatencyEl.classList.add('danger');
+    } else if (avg > 80) {
+        avgLatencyEl.classList.add('warning');
+    } else {
+        avgLatencyEl.classList.add('success');
+    }
+    
+    // Jitter (desviación estándar aproximada)
+    let jitter = 0;
+    if (latencies.length > 1) {
+        const mean = avg;
+        const squaredDiffs = latencies.map(l => Math.pow(l - mean, 2));
+        const variance = squaredDiffs.reduce((a, b) => a + b, 0) / latencies.length;
+        jitter = Math.sqrt(variance);
+    }
+    jitterEl.textContent = `${jitter.toFixed(0)} ms`;
+    jitterEl.className = 'metric-value';
+    if (jitter > 30) {
+        jitterEl.classList.add('danger');
+    } else if (jitter > 15) {
+        jitterEl.classList.add('warning');
+    } else {
+        jitterEl.classList.add('success');
+    }
+    
+    // Estadísticas
+    sentPacketsEl.textContent = stats.sent;
+    receivedPacketsEl.textContent = stats.received;
+    lostPacketsEl.textContent = stats.lost;
+    minLatencyEl.textContent = latencies.length > 0 
+        ? `${Math.min(...latencies).toFixed(0)} ms` 
+        : '0 ms';
+    maxLatencyEl.textContent = latencies.length > 0 
+        ? `${Math.max(...latencies).toFixed(0)} ms` 
+        : '0 ms';
+    
+    if (stats.startTime) {
+        const elapsed = (Date.now() - stats.startTime) / 1000;
+        testDurationEl.textContent = `${Math.floor(elapsed)} seg`;
+    }
+}
+
+function sendPacket() {
+    if (!stabilityTestRunning) return;
+    
+    stats.sent++;
+    const latency = generateLatency();
+    
+    // Simular pérdida de paquete (5-8% de probabilidad)
+    const shouldLose = Math.random() < 0.06;
+    
+    if (shouldLose) {
+        stats.lost++;
+        addPacketToChart(null);
+    } else {
+        stats.received++;
+        stats.latencies.push(latency);
+        addPacketToChart(latency);
+    }
+    
+    updateMetrics();
+}
+
+function startStabilityTest() {
+    if (stabilityTestRunning) {
+        // Detener prueba
+        stabilityTestRunning = false;
+        clearInterval(stabilityInterval);
+        startBtn.innerHTML = '<i class="fas fa-play"></i> Reiniciar Prueba';
+        testStatus.textContent = 'Prueba finalizada';
+        testStatus.className = 'test-status';
+        return;
+    }
+    
+    // Reiniciar estadísticas
+    stats = {
+        sent: 0,
+        received: 0,
+        lost: 0,
+        latencies: [],
+        startTime: Date.now()
+    };
+    packetHistory = [];
+    chartContainer.innerHTML = '';
+    
+    stabilityTestRunning = true;
+    startBtn.innerHTML = '<i class="fas fa-stop"></i> Detener Prueba';
+    testStatus.textContent = '▶ Probando conexión...';
+    testStatus.className = 'test-status running';
+    
+    // Enviar paquetes cada 200ms (5 por segundo)
+    let packetCount = 0;
+    const maxPackets = 60; // 60 paquetes = ~12 segundos de prueba
+    
+    stabilityInterval = setInterval(() => {
+        if (!stabilityTestRunning) {
+            clearInterval(stabilityInterval);
+            return;
+        }
+        sendPacket();
+        packetCount++;
+        if (packetCount >= maxPackets) {
+            stabilityTestRunning = false;
+            clearInterval(stabilityInterval);
+            startBtn.innerHTML = '<i class="fas fa-play"></i> Reiniciar Prueba';
+            testStatus.textContent = '✅ Prueba completada';
+            testStatus.className = 'test-status';
+        }
+    }, 200);
+}
+
+// Evento del botón
+if (startBtn) {
+    startBtn.addEventListener('click', startStabilityTest);
+}
+
+// ==========================================
+// 5. PARTICLES.JS - FONDO DE CONECTIVIDAD
+// ==========================================
+if (typeof particlesJS !== 'undefined') {
+    particlesJS('particles-js', {
+        particles: {
+            number: {
+                value: 80,
+                density: {
+                    enable: true,
+                    value_area: 800
+                }
+            },
+            color: {
+                value: '#2563eb'
+            },
+            shape: {
+                type: 'circle',
+                stroke: {
+                    width: 0,
+                    color: '#000000'
+                }
+            },
+            opacity: {
+                value: 0.5,
+                random: true,
+                anim: {
+                    enable: true,
+                    speed: 1,
+                    opacity_min: 0.1,
+                    sync: false
+                }
+            },
+            size: {
+                value: 3,
+                random: true,
+                anim: {
+                    enable: true,
+                    speed: 2,
+                    size_min: 0.1,
+                    sync: false
+                }
+            },
+            line_linked: {
+                enable: true,
+                distance: 150,
+                color: '#2563eb',
+                opacity: 0.3,
+                width: 1
+            },
+            move: {
+                enable: true,
+                speed: 1.5,
+                direction: 'none',
+                random: true,
+                straight: false,
+                out_mode: 'out',
+                bounce: false,
+                attract: {
+                    enable: true,
+                    rotateX: 600,
+                    rotateY: 1200
+                }
+            }
+        },
+        interactivity: {
+            detect_on: 'canvas',
+            events: {
+                onhover: {
+                    enable: true,
+                    mode: 'grab'
+                },
+                onclick: {
+                    enable: true,
+                    mode: 'push'
+                },
+                resize: true
+            },
+            modes: {
+                grab: {
+                    distance: 140,
+                    line_linked: {
+                        opacity: 0.6
+                    }
+                },
+                push: {
+                    particles_nb: 4
+                }
+            }
+        },
+        retina_detect: true
+    });
+}
