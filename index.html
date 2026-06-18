@@ -62,8 +62,20 @@
                 </div>
                 <div class="form-group">
                     <label for="formOffer"><i class="fas fa-dollar-sign"></i> Oferta (USD) *</label>
-                    <input type="number" id="formOffer" name="Oferta" required>
+                    <input type="number" min="1" id="formOffer" name="Oferta" required>
                 </div>
+
+                    <div class="form-group">
+    <label for="formMessage"><i class="fas fa-comment"></i> Mensaje adicional</label>
+    <textarea 
+        id="formMessage" 
+        name="Mensaje del Comprador" 
+        rows="4" 
+        maxlength="500" 
+        placeholder="Cuéntanos más sobre tu propuesta..."
+    ></textarea>
+</div>
+                    
                 <button type="submit" class="btn-submit">
                     <i class="fas fa-paper-plane"></i> Enviar oferta
                 </button>
