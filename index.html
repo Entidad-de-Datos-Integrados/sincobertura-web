@@ -1,97 +1,276 @@
-<!-- -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sin Cobertura - Tu red, tu potencia</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sin Cobertura.com - Tu red, tu potencia</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    
+    <!-- CSS propio -->
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
+    <!-- ===== BANNER DE VENTA ===== -->
     <div class="top-banner">
-        <i class="fas fa-crown"></i> DOMINIO EN VENTA · <a href="#contact">Adquirir ahora</a>
+        <i class="fas fa-crown"></i> DOMINIO EN VENTA · Oportunidad única para tu negocio de telecomunicaciones 
+        <i class="fas fa-arrow-right" style="margin-left: 10px;"></i> 
+        <a href="#contact">Adquirir ahora</a>
     </div>
 
+    <!-- ===== HERO ===== -->
     <section class="hero">
         <div class="container hero-content">
-            <div class="tagline"><i class="fas fa-wifi"></i> El nombre que todo usuario recuerda</div>
+            <div class="tagline">
+                <i class="fas fa-wifi" style="margin-right: 10px;"></i> El nombre que todo técnico recuerda
+            </div>
             <h1>Sin<span>Cobertura</span>.com</h1>
-            <p>El dominio perfecto para construir el referente en redes y telecomunicaciones.</p>
+            <p>
+                El dominio perfecto para construir el <strong>referente en redes, diagnóstico y venta de equipos</strong> 
+                en el mundo hispanohablante.
+            </p>
+            <div class="badge-price">
+                $ 3.900 USD <small>· Precio base</small>
+            </div>
             
-            <div class="badge-price">$ 3.900 USD <small>· Precio base</small></div>
-
-            <a href="https://porkbun.com/checkout/search?q=sincobertura.com" class="btn-porkbun" target="_blank">
-                <i class="fas fa-credit-card"></i> Comprar ahora en Porkbun
-            </a>
+            <!-- Botones duales: Compra directa y Oferta -->
+            <div class="hero-buttons">
+                <a href="https://porkbun.com" target="_blank" class="cta-button primary">
+                    <i class="fas fa-shopping-cart"></i> Comprar ahora en Porkbun
+                </a>
+                <a href="#contact" class="cta-button secondary">
+                    <i class="fas fa-handshake"></i> Hacer una oferta
+                </a>
+            </div>
             
-            <a href="#contact" class="cta-button" id="contactButton">
-                <i class="fas fa-handshake"></i> Hacer una oferta
-            </a>
-        </div>
-    </section>
-
-    <section class="features">
-        <div class="container">
-            <h2 class="text-center">La WEB</h2>
-            <div class="grid">
-                <div class="card">
-                    <i class="fas fa-satellite-dish"></i>
-                    <h3>Diagnóstico</h3>
-                    <p>Test de velocidad y análisis de señal WiFi.</p>
-                </div>
-                <!-- ... resto de tarjetas ... -->
+            <p style="margin-top: 20px; font-size: 0.9rem; color: #64748b;">
+                <i class="fas fa-shield-alt"></i> Transferencia segura vía Porkbun · Dominio con 15 años de antigüedad
+            </p>
+            
+            <!-- CONTADOR DE VISITAS -->
+            <div class="visitor-counter">
+                <i class="fas fa-eye"></i>
+                <span id="visitCounter">0</span> visitas
             </div>
         </div>
     </section>
 
-    <section id="contact" class="section-padding">
+    <!-- ===== CARACTERÍSTICAS / FUNCIONALIDADES ===== -->
+    <section class="features">
         <div class="container">
-            <h2 class="text-center"><i class="fas fa-handshake"></i> Haz tu oferta</h2>
-            <div class="contact-wrapper">
-                <form id="contactForm" action="https://formspree.io/f/mnjykbjk" method="POST">
-                    <div class="form-group">
-
-                    <label for="formName"><i class="fas fa-user"></i> Interesado *</label>
-                    <input type="text" id="formName" name="Nombre" required>
+            <h2>¿Qué puedes montar aquí?</h2>
+            <p class="subtitle">Un ecosistema completo para profesionales y aficionados a las redes</p>
+            <div class="grid">
+                <div class="card">
+                    <i class="fas fa-satellite-dish"></i>
+                    <h3>Diagnóstico de Redes</h3>
+                    <p>Test de velocidad, análisis de señal WiFi, mapeo de cobertura y detección de intrusos.</p>
                 </div>
-                <div class="form-group">
-                    <label for="formEmail"><i class="fas fa-envelope"></i> Correo electrónico *</label>
-                    <input type="email" id="formEmail" name="Email" required>
+                <div class="card">
+                    <i class="fas fa-newspaper"></i>
+                    <h3>Blog &amp; Tutoriales</h3>
+                    <p>Guías paso a paso para configurar routers, repetidores, VPNs y redes mesh.</p>
                 </div>
-                <div class="form-group">
-                    <label for="formOffer"><i class="fas fa-dollar-sign"></i> Oferta (USD) *</label>
-                    <input type="number" min="1" id="formOffer" name="Oferta" required>
+                <div class="card">
+                    <i class="fas fa-store"></i>
+                    <h3>Tienda de Equipos</h3>
+                    <p>Venta de routers, antenas, cables, switches y accesorios con reseñas técnicas.</p>
                 </div>
-
-                    <div class="form-group">
-    <label for="formMessage"><i class="fas fa-comment"></i> Mensaje adicional</label>
-    <textarea 
-        id="formMessage" 
-        name="Mensaje del Comprador" 
-        rows="4" 
-        maxlength="500" 
-        placeholder="Cuéntanos más sobre tu propuesta..."
-    ></textarea>
-</div>
-                    
-                <button type="submit" class="btn-submit">
-                    <i class="fas fa-paper-plane"></i> Enviar oferta
-                </button>
-            </form>
+                <div class="card">
+                    <i class="fas fa-link"></i>
+                    <h3>Directorio de Enlaces</h3>
+                    <p>Recopilación de herramientas, foros, calculadoras de subred y software libre.</p>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<footer class="footer">
-    <div class="container">
-        <p class="footer-brand">SinCobertura.com</p>
-        <p class="footer-copy">&copy; 2026 · <a href="transferencia.html">Política de transferencia</a></p>
-    </div>
-</footer>
+    <!-- ===== CALCULADORA DE SUBREDES ===== -->
+    <section class="calculator-section">
+        <div class="container">
+            <h2><i class="fas fa-calculator" style="color: #2563eb;"></i> Calculadora de Subredes</h2>
+            <p class="subtitle">Simula la segmentación de tu red. Ideal para administradores y técnicos.</p>
+            
+            <div class="calculator-container">
+                <div class="calc-inputs">
+                    <div class="calc-group">
+                        <label for="ipInput">Dirección IP</label>
+                        <input type="text" id="ipInput" value="192.168.1.0" placeholder="Ej: 192.168.1.0" />
+                    </div>
+                    <div class="calc-group">
+                        <label for="maskInput">Máscara de Subred (CIDR)</label>
+                        <input type="number" id="maskInput" value="24" min="0" max="32" placeholder="24" />
+                    </div>
+                    <button id="calcButton" class="cta-button primary" style="padding: 12px 30px; font-size: 1rem; align-self: flex-end;">
+                        <i class="fas fa-play"></i> Calcular
+                    </button>
+                </div>
+                
+                <div class="calc-results" id="calcResults">
+                    <div class="result-item">
+                        <span class="result-label">Red</span>
+                        <span class="result-value" id="networkAddress">192.168.1.0</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Broadcast</span>
+                        <span class="result-value" id="broadcastAddress">192.168.1.255</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Rango de hosts</span>
+                        <span class="result-value" id="hostRange">192.168.1.1 - 192.168.1.254</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Hosts disponibles</span>
+                        <span class="result-value" id="totalHosts">254</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Máscara decimal</span>
+                        <span class="result-value" id="decimalMask">255.255.255.0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script src="script.js"></script>
+    <!-- ===== MOCKUP DE CONTENIDO ===== -->
+    <section class="mockup-section">
+        <div class="container">
+            <h2><i class="fas fa-eye" style="color: #2563eb;"></i> Vista previa del contenido potencial</h2>
+            <div class="mockup-grid">
+                <div class="mockup-item">
+                    <div class="title-mock"><i class="fas fa-tachometer-alt"></i> Test de Velocidad</div>
+                    <p>Mide tu ping, descarga y subida. Identifica cuellos de botella en tu red local.</p>
+                    <span class="tag">Herramienta</span>
+                </div>
+                <div class="mockup-item">
+                    <div class="title-mock"><i class="fas fa-play-circle"></i> Tutorial: WiFi 6</div>
+                    <p>Cómo sacar el máximo partido a tu router WiFi 6 y configurar bandas de 5GHz.</p>
+                    <span class="tag">Video + Texto</span>
+                </div>
+                <div class="mockup-item">
+                    <div class="title-mock"><i class="fas fa-microchip"></i> Router MikroTik hAP ax3</div>
+                    <p>Equipo de gama alta. <strong>Precio: $189</strong> · Stock disponible.</p>
+                    <span class="price-tag">En oferta</span>
+                </div>
+                <div class="mockup-item">
+                    <div class="title-mock"><i class="fas fa-sitemap"></i> Mapa de Cobertura</div>
+                    <p>Sube tu plano y simula la señal WiFi para colocar puntos de acceso estratégicos.</p>
+                    <span class="tag">Pro</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- ===== TESTIMONIO ===== -->
+    <section class="testimonial">
+        <div class="container">
+            <p>
+                <i class="fas fa-quote-left" style="color: #2563eb; font-size: 2rem; vertical-align: middle;"></i>
+                Ideal para comunidades de redes, herramientas de diagnóstico y tienda de soluciones de conectividad.
+            </p>
+            <p class="testimonial-author">— Análisis de mercado, 2026</p>
+        </div>
+    </section>
+
+    <!-- ===== SECCIÓN DE CONTACTO / OFERTAS ===== -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2><i class="fas fa-handshake" style="color: #2563eb;"></i> Haz tu oferta</h2>
+            <p class="subtitle">Completa el formulario y te responderemos en menos de 24 horas.</p>
+            
+            <div class="contact-container">
+                <!-- IMPORTANTE: Cambia 'TU_NUEVO_HASH' por el hash que obtengas de Formspree -->
+                <form id="contactForm" action="https://formspree.io/f/TU_NUEVO_HASH" method="POST">
+                    <div class="form-group">
+                        <label for="formName">
+                            <i class="fas fa-user"></i> Nombre completo *
+                        </label>
+                        <input type="text" id="formName" name="name" placeholder="Tu nombre completo" required />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="formEmail">
+                            <i class="fas fa-envelope"></i> Correo electrónico *
+                        </label>
+                        <input type="email" id="formEmail" name="email" placeholder="tucorreo@ejemplo.com" required />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="formOffer">
+                            <i class="fas fa-dollar-sign"></i> Tu oferta (USD) *
+                        </label>
+                        <input type="number" id="formOffer" name="offer" placeholder="Ej: 3500" min="1" step="any" required />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="formMessage">
+                            <i class="fas fa-comment"></i> Mensaje adicional
+                        </label>
+                        <textarea id="formMessage" name="message" rows="4" placeholder="Cuéntanos por qué te interesa este dominio..."></textarea>
+                    </div>
+                    
+                    <!-- Campos ocultos -->
+                    <input type="hidden" name="dominio" value="SinCobertura.com" />
+                    <input type="hidden" name="_subject" value="Nueva oferta por SinCobertura.com" />
+                    <input type="hidden" name="_captcha" value="false" />
+                    
+                    <button type="submit" id="submitBtn" class="cta-button primary" style="width: 100%; text-align: center; justify-content: center;">
+                        <i class="fas fa-paper-plane"></i> Enviar oferta
+                    </button>
+                    
+                    <!-- Mensaje de estado -->
+                    <div id="formStatus" style="margin-top: 15px; display: none;"></div>
+                </form>
+                
+                <!-- Información adicional -->
+                <div class="contact-info">
+                    <div class="info-card">
+                        <i class="fas fa-clock"></i>
+                        <h4>Respuesta rápida</h4>
+                        <p>Respondemos todas las ofertas en menos de 24 horas.</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-lock"></i>
+                        <h4>100% confidencial</h4>
+                        <p>Tus datos están seguros y no serán compartidos.</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-file-signature"></i>
+                        <h4>Oferta vinculante</h4>
+                        <p>Tu oferta es seria y será considerada prioritariamente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-brand">SinCobertura.com</p>
+            <p>
+                Este dominio está en venta. Si tienes una visión para crear el mejor portal de redes, 
+                <a href="#contact">contáctanos</a>.
+            </p>
+            <div class="social-icons">
+                <i class="fab fa-x-twitter"></i>
+                <i class="fab fa-linkedin"></i>
+                <i class="fab fa-youtube"></i>
+            </div>
+            <p class="footer-copy">
+                &copy; 2026 · Oferta sujeta a negociación · <a href="transferencia.html">Política de transferencia</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script src="script.js"></script>
 </body>
 </html>
