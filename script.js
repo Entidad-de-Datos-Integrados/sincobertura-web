@@ -100,7 +100,20 @@ function initContactForm() {
             '<i class="fas fa-spinner fa-spin"></i> Enviando...';
 
         try {
-            const formData = new FormData(form);
+            const payload = {
+    name,
+    email,
+    offer,
+    message: document.getElementById('formMessage')?.value || ''
+};
+
+const response = await fetch('/api/contact', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+});
 
             const response = await fetch(form.action, {
                 method: 'POST',
