@@ -440,67 +440,58 @@ if (startBtn) {
 }
 
 // ==========================================
-// 5. PARTICLES.JS - FONDO DE CONECTIVIDAD
+// 5. PARTICLES.JS - FONDO DE CONECTIVIDAD (VERSIÓN LIGERA)
 // ==========================================
 if (typeof particlesJS !== 'undefined') {
     particlesJS('particles-js', {
         particles: {
             number: {
-                value: 80,
+                value: 40, // Reducido de 80 a 40
                 density: {
                     enable: true,
-                    value_area: 800
+                    value_area: 1000
                 }
             },
             color: {
                 value: '#2563eb'
             },
             shape: {
-                type: 'circle',
-                stroke: {
-                    width: 0,
-                    color: '#000000'
-                }
+                type: 'circle'
             },
             opacity: {
-                value: 0.5,
+                value: 0.4,
                 random: true,
                 anim: {
                     enable: true,
-                    speed: 1,
+                    speed: 0.5,
                     opacity_min: 0.1,
                     sync: false
                 }
             },
             size: {
-                value: 3,
+                value: 2.5,
                 random: true,
                 anim: {
-                    enable: true,
-                    speed: 2,
-                    size_min: 0.1,
-                    sync: false
+                    enable: false // Desactivamos animación de tamaño
                 }
             },
             line_linked: {
                 enable: true,
-                distance: 150,
+                distance: 120, // Reducido de 150 a 120
                 color: '#2563eb',
-                opacity: 0.3,
-                width: 1
+                opacity: 0.2,
+                width: 0.8 // Reducido de 1 a 0.8
             },
             move: {
                 enable: true,
-                speed: 1.5,
+                speed: 0.8, // Reducido de 1.5 a 0.8
                 direction: 'none',
                 random: true,
                 straight: false,
                 out_mode: 'out',
                 bounce: false,
                 attract: {
-                    enable: true,
-                    rotateX: 600,
-                    rotateY: 1200
+                    enable: false // Desactivamos atracción (ahorra CPU)
                 }
             }
         },
@@ -519,13 +510,13 @@ if (typeof particlesJS !== 'undefined') {
             },
             modes: {
                 grab: {
-                    distance: 140,
+                    distance: 100,
                     line_linked: {
-                        opacity: 0.6
+                        opacity: 0.4
                     }
                 },
                 push: {
-                    particles_nb: 4
+                    particles_nb: 2
                 }
             }
         },
