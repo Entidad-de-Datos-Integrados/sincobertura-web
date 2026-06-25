@@ -5,20 +5,4 @@
   "dependencies": {
     "resend": "^6.14.0"
   }
-}<<<<<<< HEAD
-{
-  "name": "sincobertura-web",
-  "version": "1.0.0",
-  "private": true,
-  "dependencies": {
-    "resend": "^6.14.0"
-  }
 }
-||||||| empty tree
-=======
-{
-  "name": "sincobertura-web",
-  "version": "1.0.0",
-  "private": true
-}
->>>>>>> 649db0d7e2e4ab32be96543b35d3efe701c1b7a4
