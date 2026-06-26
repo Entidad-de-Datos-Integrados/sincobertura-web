@@ -10,12 +10,13 @@ export default async function handler(req, res) {
     }
 
     try {
-        const {
-            name,
-            email,
-            offer,
-            message,
-            "cf-turnstile-response": turnstileToken
+       const {
+    name,
+    email,
+    offer,
+    message
+} = req.body;
+          const turnstileToken = req.body["cf-turnstile-response"];
         } = req.body;
 
         if (!name || !email || !offer) {
