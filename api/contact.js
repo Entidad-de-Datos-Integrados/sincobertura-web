@@ -4,7 +4,10 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 module.exports = async function handler(req, res) {
     if (req.method !== "POST") {
-        return res.status(405).json({ error: "Method not allowed" });
+        return res.status(405).json({
+            success: false,
+            message: "Method not allowed"
+        });
     }
 
     try {
@@ -17,15 +20,18 @@ module.exports = async function handler(req, res) {
 
         const turnstileToken = req.body["cf-turnstile-response"];
 
-        console.log("TURNSTILE_SECRET:", process.env.TURNSTILE_SECRET_KEY);
-        console.log("TOKEN:", turnstileToken);
-
         if (!name || !email || !offer) {
-            return res.status(400).json({ error: "Missing required fields" });
+            return res.status(400).json({
+                success: false,
+                message: "Por favor completa todos los campos obligatorios."
+            });
         }
 
         if (!turnstileToken) {
-            return res.status(400).json({ error: "Captcha required" });
+            return res.status(400).json({
+                success: false,
+                message: "Verificación CAPTCHA requerida."
+            });
         }
 
         const verification = await fetch(
@@ -44,33 +50,46 @@ module.exports = async function handler(req, res) {
 
         const verificationResult = await verification.json();
 
-        console.log("VERIFICATION:", verificationResult);
-
         if (!verificationResult.success) {
-            return res.status(403).json({ error: "Captcha failed" });
+            return res.status(403).json({
+                success: false,
+                message: "Verificación de seguridad fallida."
+            });
         }
 
         const data = await resend.emails.send({
             from: "SinCobertura <onboarding@resend.dev>",
             to: ["wiinix20@gmail.com"],
-            subject: `Nueva oferta — $${offer}`,
+            subject: `💼 Nueva oferta por SinCobertura.com — $${offer}`,
             replyTo: email,
             html: `
-                <h2>Nueva oferta</h2>
-                <p><b>Nombre:</b> ${name}</p>
-                <p><b>Email:</b> ${email}</p>
-                <p><b>Oferta:</b> $${offer}</p>
-                <p><b>Mensaje:</b> ${message || "Sin mensaje"}</p>
+                <div style="font-family:Arial,sans-serif;line-height:1.6">
+                    <h2>📩 Nueva oferta recibida</h2>
+
+                    <p><strong>Nombre:</strong> ${name}</p>
+                    <p><strong>Email:</strong> ${email}</p>
+                    <p><strong>Oferta:</strong> $${offer}</p>
+
+                    <hr/>
+
+                    <p><strong>Mensaje:</strong></p>
+                    <p>${message || "Sin mensaje adicional"}</p>
+                </div>
             `
         });
 
         return res.status(200).json({
             success: true,
+            message: "Oferta enviada correctamente. Te contactaremos en menos de 24 horas.",
             emailId: data.id
         });
 
     } catch (error) {
-        console.error("ERROR:", error);
-        return res.status(500).json({ error: "Server error" });
+        console.error("API ERROR:", error);
+
+        return res.status(500).json({
+            success: false,
+            message: "Error interno. Intenta nuevamente."
+        });
     }
 };
