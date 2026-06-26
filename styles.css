@@ -522,3 +522,8 @@ section {
         margin: 0 10px;
     }
 }
+
+#particles-js canvas {
+    filter: blur(0.2px);
+    opacity: 0.9;
+}
