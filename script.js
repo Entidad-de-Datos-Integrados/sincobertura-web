@@ -81,11 +81,6 @@ function initContactForm() {
             return;
         }
 
-        /*
-         * Turnstile:
-         * Cloudflare inyecta un input hidden:
-         * cf-turnstile-response
-         */
         const captchaResponse = form.querySelector(
             '[name="cf-turnstile-response"]'
         );
@@ -100,31 +95,30 @@ function initContactForm() {
             '<i class="fas fa-spinner fa-spin"></i> Enviando...';
 
         try {
+
+            /* =========================
+               🟢 PAYLOAD REAL (FIX)
+            ========================= */
             const payload = {
-    name,
-    email,
-    offer,
-    message: document.getElementById('formMessage')?.value || ''
-};
+                name,
+                email,
+                offer,
+                message: document.getElementById('formMessage')?.value || '',
+                "cf-turnstile-response": captchaResponse.value
+            };
 
-const response = await fetch('/api/contact', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(payload)
-});
-
-            const response = await fetch(form.action, {
+            const response = await fetch('/api/contact', {
                 method: 'POST',
-                body: formData,
                 headers: {
-                    Accept: 'application/json'
-                }
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
             });
 
-            if (!response.ok) {
-                throw new Error('Error en el envío');
+            const data = await response.json();
+
+            if (!response.ok || !data.success) {
+                throw new Error(data.message || 'Error en el envío');
             }
 
             form.reset();
@@ -136,10 +130,11 @@ const response = await fetch('/api/contact', {
             const counter = document.getElementById('charCounter');
             if (counter) counter.textContent = '0 / 500';
 
-            showSuccess(
-                status,
-                'Oferta enviada correctamente. Responderemos pronto.'
-            );
+            /* =========================
+               🟣 UI PREMIUM (NUEVO)
+            ========================= */
+            showPremiumSuccess(document.querySelector(".contact-container"));
+
         } catch (error) {
             console.error(error);
 
@@ -153,6 +148,48 @@ const response = await fetch('/api/contact', {
                 '<i class="fas fa-paper-plane"></i> Enviar oferta';
         }
     });
+}
+
+/* =========================
+   🟣 PREMIUM SUCCESS SCREEN (NUEVO)
+========================= */
+function showPremiumSuccess(container) {
+    container.innerHTML = `
+        <div style="
+            text-align:center;
+            padding:60px 20px;
+        ">
+            <div style="font-size:64px;">✅</div>
+
+            <h2 style="margin-top:20px;font-size:28px;">
+                Oferta enviada
+            </h2>
+
+            <p style="color:#64748b;margin-top:10px;">
+                Hemos recibido tu propuesta para <strong>SinCobertura.com</strong>
+            </p>
+
+            <div style="
+                margin:30px auto;
+                padding:20px;
+                max-width:420px;
+                background:#f8fafc;
+                border:1px solid #e2e8f0;
+                border-radius:16px;
+            ">
+                <p style="margin:0;font-weight:600;">
+                    ⏱ Tiempo de respuesta
+                </p>
+                <p style="margin-top:8px;color:#475569;">
+                    Normalmente respondemos en menos de 24 horas
+                </p>
+            </div>
+
+            <p style="color:#94a3b8;font-size:14px;">
+                Puedes cerrar esta página o seguir navegando
+            </p>
+        </div>
+    `;
 }
 
 /* =========================
@@ -172,12 +209,6 @@ function showError(statusEl, message) {
     statusEl.className = 'error';
     statusEl.style.display = 'block';
     statusEl.textContent = `❌ ${message}`;
-}
-
-function showSuccess(statusEl, message) {
-    statusEl.className = 'success';
-    statusEl.style.display = 'block';
-    statusEl.textContent = `✅ ${message}`;
 }
 
 /* =========================
@@ -227,26 +258,9 @@ function initParticles() {
         interactivity: {
             detect_on: 'canvas',
             events: {
-                onhover: {
-                    enable: true,
-                    mode: 'grab'
-                },
-                onclick: {
-                    enable: true,
-                    mode: 'push'
-                },
+                onhover: { enable: true, mode: 'grab' },
+                onclick: { enable: true, mode: 'push' },
                 resize: true
-            },
-            modes: {
-                grab: {
-                    distance: 110,
-                    line_linked: {
-                        opacity: 0.4
-                    }
-                },
-                push: {
-                    particles_nb: 2
-                }
             }
         },
         retina_detect: true
