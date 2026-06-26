@@ -410,12 +410,13 @@ Specificity: (0,1,0)
 }
 
 .info-card {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
+    background: #f7e76d5e;
+    border: 1px solid #08092145;
+    border-radius: 30px;
     padding: 28px;
     box-shadow: var(--shadow-soft);
     text-align: center;
+}
 }
 
 .info-card i {
