@@ -10,11 +10,46 @@ export default async function handler(req, res) {
     }
 
     try {
-        const { name, email, offer, message } = req.body;
+        const {
+            name,
+            email,
+            offer,
+            message,
+            "cf-turnstile-response": turnstileToken
+        } = req.body;
 
         if (!name || !email || !offer) {
             return res.status(400).json({
                 error: "Missing required fields"
+            });
+        }
+
+        if (!turnstileToken) {
+            return res.status(400).json({
+                error: "Captcha required"
+            });
+        }
+
+        // Verificar captcha con Cloudflare
+        const verification = await fetch(
+            "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: new URLSearchParams({
+                    secret: process.env.TURNSTILE_SECRET_KEY,
+                    response: turnstileToken
+                })
+            }
+        );
+
+        const verificationResult = await verification.json();
+
+        if (!verificationResult.success) {
+            return res.status(403).json({
+                error: "Captcha failed"
             });
         }
 
@@ -39,7 +74,7 @@ export default async function handler(req, res) {
         });
 
     } catch (error) {
-        console.error("RESEND ERROR:", error);
+        console.error("ERROR:", error);
 
         return res.status(500).json({
             error: "Server error"
