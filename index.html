@@ -20,10 +20,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <!-- Particles -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
-    <!-- Turnstile -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
     <link rel="stylesheet" href="styles.css">
@@ -41,208 +38,89 @@
 
 <main>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="container hero-content">
+<!-- HERO -->
+<section class="hero">
+    <div class="container hero-content">
 
-            <div class="tagline">
-                <i class="fas fa-wifi"></i>
-                Un nombre que nadie olvida
-            </div>
+        <h1>Sin<span>Cobertura</span>.com</h1>
 
-            <h1>Sin<span>Cobertura</span>.com</h1>
+        <p class="hero-description">
+            Dominio premium para telecomunicaciones, conectividad y tecnología.
+        </p>
 
-            <p class="hero-description">
-                Un dominio corto, memorable y con enorme potencial comercial para proyectos de
-                <strong>telecomunicaciones, conectividad, soporte técnico y tecnología</strong>.
-            </p>
-
-            <div class="badge-price">
-                <span>$3,900 USD</span>
-                <small>precio base negociable</small>
-            </div>
-
-            <div class="hero-buttons">
-                <a href="https://porkbun.com/marketplace?mq=Sincobertura.com"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="cta-button primary">
-                    <i class="fas fa-cart-shopping"></i>
-                    Comprar dominio
-                </a>
-
-                <a href="#contact" class="cta-button secondary">
-                    <i class="fas fa-handshake"></i>
-                    Hacer una oferta
-                </a>
-            </div>
-
-            <p class="hero-note">
-                <i class="fas fa-shield-alt"></i>
-                Transferencia segura mediante broker o marketplace
-            </p>
-
+        <div class="badge-price">
+            <span>$3,900 USD</span>
         </div>
-    </section>
 
-    <!-- FEATURES -->
-    <section class="features">
-        <div class="container">
+    </div>
+</section>
 
-            <h2>Dominio TLD para negocios</h2>
-            <p class="subtitle">Un activo digital pensado para una marca con gran visibilidad</p>
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+<div class="container">
 
-            <div class="grid">
+<h2>Haz tu oferta</h2>
 
-                <article class="card">
-                    <i class="fas fa-bolt"></i>
-                    <h3>Altamente memorable</h3>
-                    <p>Corto, directo y fácil de recordar incluso tras una sola visita.</p>
-                </article>
+<div class="contact-container">
 
-                <article class="card">
-                    <i class="fas fa-magnifying-glass-chart"></i>
-                    <h3>Gran potencial SEO</h3>
-                    <p>Contiene una expresión de búsqueda conocida dentro del sector telecom.</p>
-                </article>
+<form id="contactForm" action="/api/contact" method="POST" novalidate>
 
-                <article class="card">
-                    <i class="fas fa-building"></i>
-                    <h3>Branding potente</h3>
-                    <p>Ideal para medios, tiendas, soporte técnico o SaaS especializado.</p>
-                </article>
+    <div class="form-group">
+        <label for="formName">Nombre / Empresa *</label>
+        <input type="text" id="formName" name="name" required autocomplete="name">
+    </div>
 
-                <article class="card">
-                    <i class="fas fa-earth-americas"></i>
-                    <h3>Mercado hispanohablante</h3>
-                    <p>Perfecto para LATAM y España, mercados enormes en conectividad.</p>
-                </article>
+    <div class="form-group">
+        <label for="formEmail">Email *</label>
+        <input type="email" id="formEmail" name="email" required autocomplete="email">
+    </div>
 
-            </div>
-        </div>
-    </section>
+    <div class="form-group">
+        <label for="formOffer">Oferta (USD) *</label>
+        <input type="number" id="formOffer" name="offer" min="1" required>
+    </div>
 
-    <!-- USE CASES -->
-    <section class="usecases">
-        <div class="container">
+    <div class="form-group">
+        <label for="formMessage">Mensaje (Opcional)</label>
+        <textarea id="formMessage" name="message" maxlength="300" rows="4"></textarea>
+        <small id="charCounter">0 / 300</small>
+    </div>
 
-            <h2>Proyectos afines al dominio</h2>
+    <div class="form-group">
+        <p style="padding: 2px; color: red;">
+            Campos obligatorios señalados con (*)
+        </p>
+    </div>
 
-            <div class="usecases-grid">
+    <!-- TURNSTILE -->
+    <div class="captcha-wrapper">
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAADrbNnOOzWh4BbYN"></div>
+    </div>
 
-                <div class="usecase-item">
-                    <i class="fas fa-satellite-dish"></i>
-                    <span>Portal de diagnóstico de internet</span>
-                </div>
+    <!-- STATUS -->
+    <div id="formStatus" role="status" aria-live="polite"></div>
 
-                <div class="usecase-item">
-                    <i class="fas fa-store"></i>
-                    <span>E-commerce de routers y networking</span>
-                </div>
+    <!-- BOTÓN -->
+    <button type="submit" id="submitBtn" class="cta-button primary full-width">
+        <i class="fas fa-paper-plane"></i>
+        Enviar oferta
+    </button>
 
-                <div class="usecase-item">
-                    <i class="fas fa-blog"></i>
-                    <span>Medio especializado en telecom</span>
-                </div>
+    <!-- HIDDEN FIELDS -->
+    <input type="hidden" name="dominio" value="SinCobertura.com">
+    <input type="hidden" name="_subject" value="Nueva oferta por SinCobertura.com">
 
-                <div class="usecase-item">
-                    <i class="fas fa-headset"></i>
-                    <span>Soporte técnico y consultoría</span>
-                </div>
+</form>
 
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="contact-section" id="contact">
-        <div class="container">
-
-            <h2>Haz tu oferta</h2>
-            <p class="subtitle">Respuesta en menos de 24 horas</p>
-
-            <div class="contact-container">
-
-                <form id="contactForm" action="/api/contact" method="POST" novalidate>
-
-                    <div class="form-group">
-                        <label for="formName">Nombre / Empresa *</label>
-                        <input type="text" id="formName" name="name" required autocomplete="name">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="formEmail">Email *</label>
-                        <input type="email" id="formEmail" name="email" required autocomplete="email">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="formOffer">Oferta (USD) *</label>
-                        <input type="number" id="formOffer" name="offer" step="0.01" min="1" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="formMessage">Mensaje(Opcional)</label>
-                        <textarea id="formMessage" name="message" maxlength="300" rows="4"></textarea>
-                        <small id="charCounter">0 / 300</small>
-                    </div>
-
-                   <div style="padding: 10px;">
-  <p style="padding: 2px, color: red;">Campos obligatorios señalados con (*)</p>
 </div>
-
-                    <div class="captcha-wrapper">
-                        <div class="cf-turnstile"
-                             data-sitekey="0x4AAAAAADrbNnOOzWh4BbYN"></div>
-                    </div>
-
-                   
-
-                        <div id="formStatus" role="status" aria-live="polite"></div>
-                        
-                  
-                        <i class="fas fa-paper-plane"></i>
-                        Enviar oferta
-                    </button>
-
-                     <button type="submit" id="submitBtn" class="cta-button primary full-width">
-                         
-                    <input type="hidden" name="dominio" value="SinCobertura.com">
-                    <input type="hidden" name="_subject" value="Nueva oferta por SinCobertura.com">
-                </form>
-
-                <aside class="contact-info">
-
-                    <div class="info-card">
-                        <i class="fas fa-lock"></i>
-                        <h4>Negociación privada</h4>
-                        <p>Toda conversación se mantiene confidencial.</p>
-                    </div>
-
-                    <div class="info-card">
-                        <i class="fas fa-scale-balanced"></i>
-                        <h4>Transferencia segura</h4>
-                        <p>Transferencia mediante escrow o broker.</p>
-                    </div>
-
-                    <div class="info-card">
-                        <i class="fas fa-clock"></i>
-                        <h4>Respuesta rápida</h4>
-                        <p>Normalmente en menos de 24 horas.</p>
-                    </div>
-
-                </aside>
-
-            </div>
-        </div>
-    </section>
+</div>
+</section>
 
 </main>
 
 <footer class="footer">
     <div class="container">
-        <p class="footer-brand">SinCobertura.com</p>
-        <p>Un dominio premium para construir una gran marca digital.</p>
-        <p class="footer-copy">© 2026 · Oferta sujeta a negociación</p>
+        <p>SinCobertura.com</p>
     </div>
 </footer>
 
