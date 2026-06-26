@@ -181,10 +181,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="formMessage">Mensaje</label>
-                        <textarea id="formMessage" name="message" maxlength="500" rows="4"></textarea>
-                        <small id="charCounter">0 / 500</small>
+                        <label for="formMessage">Mensaje(Opcional)</label>
+                        <textarea id="formMessage" name="message" maxlength="300" rows="4"></textarea>
+                        <small id="charCounter">0 / 300</small>
                     </div>
+
+                    <div><p>Campos obligatorios(*)</p>
 
                     <div class="captcha-wrapper">
                         <div class="cf-turnstile"
@@ -194,12 +196,14 @@
                     <input type="hidden" name="dominio" value="SinCobertura.com">
                     <input type="hidden" name="_subject" value="Nueva oferta por SinCobertura.com">
 
+                        <div id="formStatus" role="status" aria-live="polite"></div>
+                        
                     <button type="submit" id="submitBtn" class="cta-button primary full-width">
                         <i class="fas fa-paper-plane"></i>
                         Enviar oferta
                     </button>
 
-                    <div id="formStatus" role="status" aria-live="polite"></div>
+                   
 
                 </form>
 
