@@ -52,7 +52,7 @@ module.exports = async function handler(req, res) {
 
         const data = await resend.emails.send({
             from: "SinCobertura <onboarding@resend.dev>",
-            to: ["offers@sincobertura.com"],
+            to: ["info@sincobertura.com"],
             subject: `Nueva oferta — $${offer}`,
             replyTo: email,
             html: `
