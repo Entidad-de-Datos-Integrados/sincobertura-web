@@ -220,47 +220,68 @@ function initParticles() {
     particlesJS('particles-js', {
         particles: {
             number: {
-                value: 35,
+                value: 45,
                 density: {
                     enable: true,
-                    value_area: 900
+                    value_area: 800
                 }
             },
             color: {
-                value: '#2563eb'
+                value: '#3b82f6'
             },
             shape: {
                 type: 'circle'
             },
             opacity: {
-                value: 0.35,
-                random: true
+                value: 0.25,
+                random: true,
+                anim: {
+                    enable: true,
+                    speed: 0.6,
+                    opacity_min: 0.1,
+                    sync: false
+                }
             },
             size: {
-                value: 2.5,
+                value: 3,
                 random: true
             },
             line_linked: {
                 enable: true,
-                distance: 130,
-                color: '#2563eb',
-                opacity: 0.18,
+                distance: 160,
+                color: '#3b82f6',
+                opacity: 0.12,
                 width: 1
             },
             move: {
                 enable: true,
-                speed: 0.8,
+                speed: 0.6,
+                direction: 'none',
                 random: true,
                 straight: false,
-                out_mode: 'out'
+                out_mode: 'out',
+                bounce: false
             }
         },
         interactivity: {
             detect_on: 'canvas',
             events: {
-                onhover: { enable: true, mode: 'grab' },
-                onclick: { enable: true, mode: 'push' },
+                onhover: {
+                    enable: true,
+                    mode: 'grab'
+                },
+                onclick: {
+                    enable: false
+                },
                 resize: true
+            },
+            modes: {
+                grab: {
+                    distance: 140,
+                    line_linked: {
+                        opacity: 0.25
+                    }
+                }
             }
         },
         retina_detect: true
