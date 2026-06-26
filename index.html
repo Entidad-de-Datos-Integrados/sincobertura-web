@@ -23,7 +23,7 @@
     <!-- Particles -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
-    <!-- Cloudflare Turnstile -->
+    <!-- Turnstile -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
     <link rel="stylesheet" href="styles.css">
@@ -53,7 +53,8 @@
             <h1>Sin<span>Cobertura</span>.com</h1>
 
             <p class="hero-description">
-                Un dominio corto, memorable y con enorme potencial para telecomunicaciones y tecnología.
+                Un dominio corto, memorable y con enorme potencial comercial para proyectos de
+                <strong>telecomunicaciones, conectividad, soporte técnico y tecnología</strong>.
             </p>
 
             <div class="badge-price">
@@ -89,31 +90,32 @@
         <div class="container">
 
             <h2>Dominio TLD para negocios</h2>
+            <p class="subtitle">Un activo digital pensado para una marca con gran visibilidad</p>
 
             <div class="grid">
 
                 <article class="card">
                     <i class="fas fa-bolt"></i>
-                    <h3>Memorable</h3>
-                    <p>Corto y fácil de recordar.</p>
+                    <h3>Altamente memorable</h3>
+                    <p>Corto, directo y fácil de recordar incluso tras una sola visita.</p>
                 </article>
 
                 <article class="card">
                     <i class="fas fa-magnifying-glass-chart"></i>
-                    <h3>SEO potencial</h3>
-                    <p>Relevante para búsquedas del sector.</p>
+                    <h3>Gran potencial SEO</h3>
+                    <p>Contiene una expresión de búsqueda conocida dentro del sector telecom.</p>
                 </article>
 
                 <article class="card">
                     <i class="fas fa-building"></i>
-                    <h3>Branding</h3>
-                    <p>Ideal para startups o SaaS.</p>
+                    <h3>Branding potente</h3>
+                    <p>Ideal para medios, tiendas, soporte técnico o SaaS especializado.</p>
                 </article>
 
                 <article class="card">
                     <i class="fas fa-earth-americas"></i>
-                    <h3>LATAM + España</h3>
-                    <p>Mercado amplio en telecom.</p>
+                    <h3>Mercado hispanohablante</h3>
+                    <p>Perfecto para LATAM y España, mercados enormes en conectividad.</p>
                 </article>
 
             </div>
@@ -124,28 +126,28 @@
     <section class="usecases">
         <div class="container">
 
-            <h2>Casos de uso</h2>
+            <h2>Proyectos afines al dominio</h2>
 
             <div class="usecases-grid">
 
                 <div class="usecase-item">
                     <i class="fas fa-satellite-dish"></i>
-                    <span>Diagnóstico de internet</span>
+                    <span>Portal de diagnóstico de internet</span>
                 </div>
 
                 <div class="usecase-item">
                     <i class="fas fa-store"></i>
-                    <span>E-commerce networking</span>
+                    <span>E-commerce de routers y networking</span>
                 </div>
 
                 <div class="usecase-item">
                     <i class="fas fa-blog"></i>
-                    <span>Medio tech</span>
+                    <span>Medio especializado en telecom</span>
                 </div>
 
                 <div class="usecase-item">
                     <i class="fas fa-headset"></i>
-                    <span>Soporte técnico</span>
+                    <span>Soporte técnico y consultoría</span>
                 </div>
 
             </div>
@@ -165,46 +167,39 @@
 
                     <div class="form-group">
                         <label for="formName">Nombre / Empresa *</label>
-                        <input type="text" id="formName" name="name" required>
+                        <input type="text" id="formName" name="name" required autocomplete="name">
                     </div>
 
                     <div class="form-group">
                         <label for="formEmail">Email *</label>
-                        <input type="email" id="formEmail" name="email" required>
+                        <input type="email" id="formEmail" name="email" required autocomplete="email">
                     </div>
 
                     <div class="form-group">
                         <label for="formOffer">Oferta (USD) *</label>
-                        <input type="number" id="formOffer" name="offer" min="1" required>
+                        <input type="number" id="formOffer" name="offer" step="0.01" min="1" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="formMessage">Mensaje (Opcional)</label>
-                        <textarea id="formMessage" name="message" maxlength="300"></textarea>
-                        <small id="charCounter">0 / 300</small>
+                        <label for="formMessage">Mensaje</label>
+                        <textarea id="formMessage" name="message" maxlength="500" rows="4"></textarea>
+                        <small id="charCounter">0 / 500</small>
                     </div>
 
-                    <p style="padding: 2px; color: red;">
-                        Campos obligatorios marcados con (*)
-                    </p>
-
-                    <!-- CAPTCHA -->
                     <div class="captcha-wrapper">
-                        <div class="cf-turnstile" data-sitekey="0x4AAAAAADrbNnOOzWh4BbYN"></div>
+                        <div class="cf-turnstile"
+                             data-sitekey="0x4AAAAAADrbNnOOzWh4BbYN"></div>
                     </div>
 
-                    <!-- STATUS -->
-                    <div id="formStatus" role="status" aria-live="polite"></div>
+                    <input type="hidden" name="dominio" value="SinCobertura.com">
+                    <input type="hidden" name="_subject" value="Nueva oferta por SinCobertura.com">
 
-                    <!-- BOTÓN -->
                     <button type="submit" id="submitBtn" class="cta-button primary full-width">
                         <i class="fas fa-paper-plane"></i>
                         Enviar oferta
                     </button>
 
-                    <!-- HIDDEN -->
-                    <input type="hidden" name="dominio" value="SinCobertura.com">
-                    <input type="hidden" name="_subject" value="Nueva oferta por SinCobertura.com">
+                    <div id="formStatus" role="status" aria-live="polite"></div>
 
                 </form>
 
@@ -212,20 +207,20 @@
 
                     <div class="info-card">
                         <i class="fas fa-lock"></i>
-                        <h4>Privado</h4>
-                        <p>Negociación confidencial.</p>
+                        <h4>Negociación privada</h4>
+                        <p>Toda conversación se mantiene confidencial.</p>
                     </div>
 
                     <div class="info-card">
                         <i class="fas fa-scale-balanced"></i>
-                        <h4>Seguro</h4>
-                        <p>Transferencia mediante escrow.</p>
+                        <h4>Transferencia segura</h4>
+                        <p>Transferencia mediante escrow o broker.</p>
                     </div>
 
                     <div class="info-card">
                         <i class="fas fa-clock"></i>
-                        <h4>Rápido</h4>
-                        <p>Respuesta en 24h.</p>
+                        <h4>Respuesta rápida</h4>
+                        <p>Normalmente en menos de 24 horas.</p>
                     </div>
 
                 </aside>
@@ -239,8 +234,8 @@
 <footer class="footer">
     <div class="container">
         <p class="footer-brand">SinCobertura.com</p>
-        <p>Dominio premium en venta</p>
-        <p class="footer-copy">© 2026</p>
+        <p>Un dominio premium para construir una gran marca digital.</p>
+        <p class="footer-copy">© 2026 · Oferta sujeta a negociación</p>
     </div>
 </footer>
 
