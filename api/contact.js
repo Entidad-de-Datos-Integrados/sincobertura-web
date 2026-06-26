@@ -2,36 +2,32 @@ const { Resend } = require("resend");
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
     if (req.method !== "POST") {
-        return res.status(405).json({
-            error: "Method not allowed"
-        });
+        return res.status(405).json({ error: "Method not allowed" });
     }
 
     try {
-       const {
-    name,
-    email,
-    offer,
-    message
-} = req.body;
-          const turnstileToken = req.body["cf-turnstile-response"];
+        const {
+            name,
+            email,
+            offer,
+            message
         } = req.body;
 
+        const turnstileToken = req.body["cf-turnstile-response"];
+
+        console.log("TURNSTILE_SECRET:", process.env.TURNSTILE_SECRET_KEY);
+        console.log("TOKEN:", turnstileToken);
+
         if (!name || !email || !offer) {
-            return res.status(400).json({
-                error: "Missing required fields"
-            });
+            return res.status(400).json({ error: "Missing required fields" });
         }
 
         if (!turnstileToken) {
-            return res.status(400).json({
-                error: "Captcha required"
-            });
+            return res.status(400).json({ error: "Captcha required" });
         }
 
-        // Verificar captcha con Cloudflare
         const verification = await fetch(
             "https://challenges.cloudflare.com/turnstile/v0/siteverify",
             {
@@ -48,24 +44,23 @@ export default async function handler(req, res) {
 
         const verificationResult = await verification.json();
 
+        console.log("VERIFICATION:", verificationResult);
+
         if (!verificationResult.success) {
-            return res.status(403).json({
-                error: "Captcha failed"
-            });
+            return res.status(403).json({ error: "Captcha failed" });
         }
 
         const data = await resend.emails.send({
-            from: "SinCobertura <offers@sincobertura.com>",
+            from: "SinCobertura <onboarding@resend.dev>",
             to: ["offers@sincobertura.com"],
-            subject: `Nueva oferta para sincobertura.com — $${offer}`,
+            subject: `Nueva oferta — $${offer}`,
             replyTo: email,
             html: `
-                <h2>Nueva oferta recibida</h2>
-                <p><strong>Nombre:</strong> ${name}</p>
-                <p><strong>Email:</strong> ${email}</p>
-                <p><strong>Oferta:</strong> $${offer}</p>
-                <p><strong>Mensaje:</strong></p>
-                <p>${message || "Sin mensaje"}</p>
+                <h2>Nueva oferta</h2>
+                <p><b>Nombre:</b> ${name}</p>
+                <p><b>Email:</b> ${email}</p>
+                <p><b>Oferta:</b> $${offer}</p>
+                <p><b>Mensaje:</b> ${message || "Sin mensaje"}</p>
             `
         });
 
@@ -76,20 +71,6 @@ export default async function handler(req, res) {
 
     } catch (error) {
         console.error("ERROR:", error);
-
-        return res.status(500).json({
-            error: "Server error"
-        });
+        return res.status(500).json({ error: "Server error" });
     }
-}
-
-
-
-console.log("TURNSTILE_SECRET:", process.env.TURNSTILE_SECRET_KEY);
-console.log("TOKEN:", turnstileToken);
-console.log("VERIFICATION:", verificationResult);
-
-
-
-
-
+};
