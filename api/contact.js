@@ -81,3 +81,14 @@ export default async function handler(req, res) {
         });
     }
 }
+
+
+
+console.log("TURNSTILE_SECRET:", process.env.TURNSTILE_SECRET_KEY);
+console.log("TOKEN:", turnstileToken);
+console.log("VERIFICATION:", verificationResult);
+
+
+
+
+
